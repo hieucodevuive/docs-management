@@ -10,6 +10,7 @@ import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import Image from '@tiptap/extension-image'
 import ImageResize from 'tiptap-extension-resize-image'
+import Underline from '@tiptap/extension-underline'
 
 import { useEditorStore } from "@/store/use-editor-store"
 
@@ -57,12 +58,11 @@ export const Editor = () => {
       TableHeader,
       TableCell,
       Image,
-      ImageResize
+      ImageResize,
+      Underline
     ],
     content: `
-      <p>This is a basic example of implementing images. Drag to re-order.</p>
-      <img src="https://placehold.co/800x400" />
-      <img src="https://placehold.co/800x400/6A00F5/white" />
+      <p>idsfhdskjfhsdj</p>
     `,
   })
 
