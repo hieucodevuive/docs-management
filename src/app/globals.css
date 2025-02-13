@@ -230,4 +230,26 @@ body {
       outline: 3px solid gray;
     }
   }
+
+   /* Link styles */
+   a {
+    color: rgb(53, 53, 230);
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(53, 53, 230);
+      text-decoration: underline;
+    }
+  }
+
+  img {
+    display: block;
+    height: auto;
+    margin: 1.5rem 0;
+    max-width: 100%;
+
+    &.ProseMirror-selectednode {
+      outline: 3px solid gray;
+    }
+  }
 }
