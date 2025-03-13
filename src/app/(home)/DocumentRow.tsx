@@ -3,8 +3,10 @@ import { SiGoogledocs } from "react-icons/si"
 import { format } from "date-fns"
 
 import { TableCell, TableRow } from "@/components/ui/table"
-import { Building2Icon, CircleUserIcon, MoreVertical } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Building2Icon, CircleUserIcon } from "lucide-react";
+import DropdownMenu from "./DropdownMenu";
+import DocumentMenu from "./DropdownMenu";
+import { useRouter } from "next/navigation";
 
 interface DocumentRowProps {
   document: Doc<"documents">
@@ -13,9 +15,13 @@ interface DocumentRowProps {
 const DocumentRow = ({
   document
 }: DocumentRowProps) => {
+  const router = useRouter()
 
   return (
-    <TableRow>
+    <TableRow
+      className="cursor-pointer"
+      onClick={() => router.push(`/documents/${document?._id}`)}
+    >
       <TableCell className="w-[50px]">
         <SiGoogledocs className="size-6 fill-blue-500"/>
       </TableCell>
@@ -35,9 +41,11 @@ const DocumentRow = ({
         {format(new Date(document?._creationTime), "dd/mm/yyyy")}
       </TableCell>
       <TableCell className="flex justify-end">
-        <Button variant="ghost" size="icon" className="rounded-full">  
-          <MoreVertical className="size-4"/>
-        </Button>
+        <DocumentMenu   
+          documentId={document?._id}
+          title={document?.title}
+          onNewTabClick={() => window.open(`/documents/${document?._id}`, "_blank")}
+        />
       </TableCell>
     </TableRow>
   );
