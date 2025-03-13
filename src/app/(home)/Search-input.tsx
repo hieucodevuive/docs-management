@@ -18,7 +18,6 @@ const SearchInput = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setSearch(value)
-    inputRef.current?.blur()
   }
 
   return (
