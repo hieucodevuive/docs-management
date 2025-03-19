@@ -1,5 +1,6 @@
 "use client"
 
+import {toast} from "sonner"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -50,7 +51,9 @@ const RemoveDialog = ({
               e.stopPropagation()
               setIsRemoving(true)
               remove({id: documentId})
-                .finally(() => {setIsRemoving(false)})
+              .catch(() => toast.error("Some thing went wrong"))
+              .then(() => toast.success("Document removed successfully"))
+              .finally(() => {setIsRemoving(false)})
             }}
           >
             Delete
