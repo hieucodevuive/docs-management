@@ -60,7 +60,7 @@ const Ruler = () => {
 
   return (
     <div 
-      ref={rulerRef}
+      ref={rulerRef as React.RefObject<HTMLDivElement>}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
