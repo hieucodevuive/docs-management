@@ -17,6 +17,7 @@ import { DialogDescription } from "@radix-ui/react-dialog";
 import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface RemoveDialogProps {
   documentId: Id<"documents">
@@ -27,6 +28,7 @@ const RemoveDialog = ({
   documentId,
   children
 }: RemoveDialogProps) => {
+  const router = useRouter()
   const remove = useMutation(api.documents.removeById)
   const [isRemoving, setIsRemoving] = useState(false)
   return ( 
@@ -52,8 +54,14 @@ const RemoveDialog = ({
               setIsRemoving(true)
               remove({id: documentId})
               .catch(() => toast.error("Some thing went wrong"))
-              .then(() => toast.success("Document removed successfully"))
-              .finally(() => {setIsRemoving(false)})
+              .then(() => {
+                router.push(`/`)
+                toast.success("Document removed successfully")
+              })
+              .finally(() => { 
+                setIsRemoving(false)
+                router.push(`/`)              
+              })
             }}
           >
             Delete
