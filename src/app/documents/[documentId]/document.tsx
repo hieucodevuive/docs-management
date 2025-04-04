@@ -22,7 +22,7 @@ const Document = ({preloadedDocument}: DocumentProps) => {
           <Toolbar />
         </div>
         <div className="pt-[137px] print:pt-0">
-            <Editor />
+            <Editor initialContent={document?.initialContent}/>
         </div>
       </div>
     </Room>

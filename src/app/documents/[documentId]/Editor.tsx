@@ -9,7 +9,7 @@ import TableCell from '@tiptap/extension-table-cell'
 import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import Image from '@tiptap/extension-image'
-import ImageResize from 'tiptap-extension-resize-image'
+// import ImageResize from 'tiptap-extension-resize-image'
 import Underline from '@tiptap/extension-underline'
 import FontFamily from '@tiptap/extension-font-family'
 import TextStyle from '@tiptap/extension-text-style'
@@ -25,11 +25,17 @@ import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 import { useEditorStore } from "@/store/use-editor-store"
 import { Threads } from "./Threads";
 import Ruler from './Ruler'
-import { root } from 'postcss'
 
-export const Editor = () => {
+interface EditorProps {
+  initialContent: string | undefined
+}
+
+export const Editor = ({initialContent}: EditorProps) => {
   const { setEditor } = useEditorStore()
-  const liveblocks = useLiveblocksExtension()
+  const liveblocks = useLiveblocksExtension({
+    initialContent,
+    offlineSupport_experimental: true
+  })
   const leftMargin = useStorage((root) => root.leftMargin)
   const rightMargin = useStorage((root) => root.rightMargin)
 
@@ -83,7 +89,7 @@ export const Editor = () => {
       TableHeader,
       TableCell,
       Image,
-      ImageResize,
+      // ImageResize,
       Underline,
       TextStyle,
       FontFamily,

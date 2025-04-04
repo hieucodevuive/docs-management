@@ -4,7 +4,6 @@ import { format } from "date-fns"
 
 import { TableCell, TableRow } from "@/components/ui/table"
 import { Building2Icon, CircleUserIcon } from "lucide-react";
-import DropdownMenu from "./DropdownMenu";
 import DocumentMenu from "./DropdownMenu";
 import { useRouter } from "next/navigation";
 
